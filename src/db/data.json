@@ -1,0 +1,41 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Hammer",
+      "description": " This is a very nice Hammer",
+      "price": 200
+    },
+    {
+      "id": 2,
+      "name": "nails",
+      "description": " This is a very nice Nails",
+      "price": 100
+    },
+    {
+      "id": 3,
+      "name": "Showel",
+      "description": "Big Showel for removing snow",
+      "price": 100
+    },
+    {
+      "id": 4,
+      "name": "Hard wood floor",
+      "description": "Oak wood flooring for good price",
+      "price": 100
+    }
+  ],
+  "users":[
+    {
+      "id":1,
+      "name":"Test User 1",
+      "access":"R"
+    },
+    {
+      "id":2,
+      "name":"Test User 2",
+      "access":"R,W"
+    }
+    
+  ]
+}
