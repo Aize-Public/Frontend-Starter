@@ -4,14 +4,11 @@
   "description": "Boilerplate to build a full stack web application using React, Node.js, Express and Webpack.",
   "main": "src/server/index.js",
   "scripts": {
-    "build": "webpack --mode production",
-    "start": "npm run build && node src/server/index.js",
-    "client": "webpack-dev-server ",
     "server": "nodemon src/server/index.js",
     "db": "json-server src/db/data.json --port 3004",
-    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run db\" "
+    "dev": "concurrently \"npm run server\" \"npm run db\" "
   },
-  "author": "Sandeep Raveesh",
+  "author": "Vaibhav Sharma",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
