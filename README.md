@@ -1,108 +1,194 @@
 # Starter pack for assessment
 
-The hardware store Hardvare realises that online shopping has gotten popular and wish to offer their products through an online shop. They wish that their customer should be able to see which products they can offer, and filter the products based on a search string. On the frontpage they wish to show product news. When a customer has found what he/she is looking for, the customer should have the possibility to put that in a shopping cart.
-The employees at Hardvare would like the opportunity to administrate the online shop, and would therefor like an administration page where they can register or remove products as the selection changes.
+## Description
 
-**For this task we would like you to pick one or more aspects from the description of Hardvare,
-and implement it in your preferred language (JS, TS etc.). You can also use frameworks if you would like that.
-We would like you to limit the time spent on this task to 1-2 hours. Use the text as inspiration and make
-something big or small where you focus on what you think is the most fun.**
+The customer realises that online shopping has gotten popular and wishes to offer their products through an online shop.
+They list out some basic functionality to want to start with on their endeavour with e-commerce:
 
-This is basic starter kit. It consists of an API which will provide you some data for the frontend creation.
-You can fork this repository to create a working solution with front-end of your choice (Angular, React, JS, Typescript).
-It's totally your choice how you want to achieve the goal.
+- As a ***customer***, I should be able to ***see the available products***
+- As a ***customer***, I should be able to ***search the available products***
+- As a ***customer***, I should be able to ***add products to my shopping cart***
+- As an ***administrator***, I should be able to ***add, edit and remove products***
 
-## Inspiration
-We would like your to make something like the wireframe below. However, it's just for inspiration, so if you
-have another vision of doing it, then do that instead!
-![alt text](ref.png)
+For inspiration, the customer drew a wireframe of an online shop to help us understand what they were after. It is just
+for clarification purposes, and the customer gave us free hands make it work/look in any way we want.
 
-## How to spin it up?
-1. Use Yarn or NPM whichever suits you
-2. Install the dependencies using ` yarn` or `npm install`
-3. Run the API server using `yarn dev` or `npm run dev`
+![pretty straight lines for a drawing](ref.png)
 
-## API
-We've provided a json-server which serves you an API you can use. It's optional to use, and you
-of course provide your own API if you would like to.
+## Task
 
- *  `GET`, `POST` `http://localhost:8080/api/products`
+Pick one or more aspects from the description and implement it in your preferred language (JS, TS etc.). You can use frameworks if you
+would like that. We'd expect you to spend 1-5 hours with the task. Use the description as inspiration and make something
+large or small, in which you focus on what you think is the most fun.
 
- * `PUT` `http://localhost:8080/api/products/:id` 
-    - Example:
-        ``` json
+As a starter pack, this repository contains an API that can be used to help you ignore the specifics of the backend. 
+Whether you choose to use the solution provided here is completely up to you.
+
+### Evaluation
+
+We evaluate the task with the core areas of frontend development in mind, which includes the usage of JS/TS, framework
+and HTML/CSS. Awe us with your knowledge and skills.
+
+## Starter pack API
+A simple json-server based API that provides endpoints for products, users and their carts.
+
+#### Prerequisites to running the API:
+- Node.js installed in your environment
+
+#### How to run:
+Install the dependencies using yarn (if installed) or npm
+``` sh
+yarn
+``` 
+or 
+``` sh
+npm install
+```
+
+#### Running the API
+
+Run the API server using
+``` sh
+yarn start
+``` 
+or 
+``` sh
+npm run start
+```
+The default location for the json-server is [`localhost:8080`](http://localhost:8080)
+
+### API endpoints
+There are four endpoints provided by the json-server. All of them support `GET`, `POST`, `PUT` and `DELETE` so be careful! 
+The API generates an in memory JSON-database on runtime that contains 1000 products, 100 users and their carts by default. That 
+means restarting will recreate the database. There is no authentication, so you can use any user id, or ignore the endpoint
+altogether.
+- `/recommendeds` is a utility endpoint to get the first 10 products
+- `/products`
+    - `/products/{product_id}`
+- `/users`
+    - `/users/{user_id}`
+- `/carts`
+    - `/carts/{user_id}`
+
+Expect objects to look something like this:
+
+```typescript
+type Product = {
+    id: number,
+    name: string,
+    description: string,
+    defaultImage: string,
+    images: string[],
+    price: number,
+    discount: number,
+};
+
+type User = {
+    id: number,
+    name: {
+        firstName: string,
+        lastName: string,
+    }
+    phone: string,
+    avatar: string,
+    email: string,
+    address: {
+        country: string,
+        city: string,
+        zip: string,
+        street: string,
+    },
+    orders: {
+        id: number,
+        products: {
+            id: number,
+            quantity: number,
+        }[],
+    },
+    role: 'ADMIN' | 'CUSTOMER' // Role is based on i % 2
+};
+
+type Cart = {
+    id: number, // User id
+    products: {
+          id: number,
+          quantity: number,
+    }[],
+}
+```
+
+### Examples:
+
+#### Products
+- `GET` `http://localhost:8080/products`
+- `GET` `http://localhost:8080/products?q={keyword}`
+  ```json
+      [
           {
-            "name": "Hammer",
-            "description": " This is a very nice Hammer",
-            "price": 200
-          }
-        ```
-
-* `DELETE` `http://localhost:8080/api/products/:id`
-    - Example:
-        ```json
-          {
-            "name": "Hammer",
-            "description": " This is a very nice Hammer",
-            "price": 200
-          } 
-        ```
-* `GET`, `POST` `http://localhost:8080/api/users`
-    - Example:
-      ```json
-        {
-          "name": "Test User 1",
-          "access": "W",
-          "orders": [
-            {
               "id": 1,
-              "products": [
+              "name": "Incredible Metal Sausages",
+              "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+              "defaultImage": "http://placeimg.com/640/480/cats", // Unfortunately faker.js doesn't support dogs...
+              "images": [
+                  "http://placeimg.com/640/480/cats",
+                  "http://placeimg.com/640/480/cats",
+                  "http://placeimg.com/640/480/cats",
+                  "http://placeimg.com/640/480/cats"
+              ],
+              "price": 64946.54, // IKR, it's an expensive metal sausage!
+              "discount": 8
+          },
+          ...
+      ]
+  ```
+
+#### Users
+- `GET` `http://localhost:8080/users/{user_id}`
+    ```json
+    {
+        "id": 1,
+        "name": {
+            "firstName": "Cesar",
+            "lastName": "Reichel"
+        },
+        "phone": "1-869-324-5801 x510",
+        "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/saarabpreet/128.jpg",
+        "email": "Charlie.Ernser@gmail.com",
+        "address": {
+            "country": "Martinique",
+            "city": "Stromanfurt",
+            "zip": "30627",
+            "street": "3607 Olson Motorway"
+        },
+        "role": "ADMIN",
+        "orders": [
                 {
-                  "id": 1,
-                  "quantity": 20,
-                  "totalPrice": 122,
-                  "discount": 20
+                    "id": 1,
+                    "products": [
+                        {
+                            "id": 388,
+                            "quantity": 5
+                        },
+                        ...
+                    ]
                 },
-                {
-                  "id": 2,
-                  "quantity": 12,
-                  "totalPrice": 178,
-                  "discount": 0
-                }
-              ]
-            }
+            ],
+    }
+  
+    ```
+#### Carts
+- `GET` `http://localhost:8080/carts/{user_id}`
+    ```json
+      {
+          "id": 1,
+          "products": [
+              {
+                  "id": 468,
+                  "quantity": 7
+              },
+              ...
           ]
-        }
-      ``` 
+      }
+    ```
 
-* `PUT` `http://localhost:8080/api/users/:id` 
-    - Example:
-      ```json 
-        {
-          "name": "Test User 1",
-          "access": "W",
-          "orders": [
-            {
-              "id": 1,
-              "products": [
-                {
-                  "id": 1,
-                  "quantity": 20,
-                  "totalPrice": 122,
-                  "discount": 20
-                },
-                {
-                  "id": 2,
-                  "quantity": 12,
-                  "totalPrice": 178,
-                  "discount": 0
-                }
-              ]
-            }
-          ]
-        }
-      ```
-
-* `DELETE` `http://localhost:8080/api/users/:id`
-
-Good luck!
+Good luck and may the code be with you!
