@@ -58,17 +58,26 @@ npm run start
 The default location for the json-server is [`localhost:8080`](http://localhost:8080)
 
 ### API endpoints
-There are four endpoints provided by the json-server. All of them support `GET`, `POST`, `PUT` and `DELETE` so be careful! 
+There are four endpoints provided by the [json-server](https://github.com/typicode/json-server). As per [json-server](https://github.com/typicode/json-server) documentation: 
+all of endpoints support `GET`, `POST`, `PUT` and `DELETE` so be careful!
 The API generates an in memory JSON-database on runtime that contains 1000 products, 100 users and their carts by default. That 
 means restarting will recreate the database. There is no authentication, so you can use any user id, or ignore the endpoint
 altogether.
+
+Endpoints:
 - `/recommendeds` is a utility endpoint to get the first 10 products
 - `/products`
-    - `/products/{product_id}`
 - `/users`
-    - `/users/{user_id}`
 - `/carts`
-    - `/carts/{user_id}`
+
+[json-server](https://github.com/typicode/json-server) cheatsheet:
+- Search with `GET /products?q={keyword}`
+- Paginate with `GET /products?_page={page_number}&_limit={number_of_entries}`
+- Get specific product `GET /products/{product_id}`
+- Get specific user `GET /users/{user_id}`
+- Get specific cart `GET /carts/{user_id}`
+- Whole database is viewable with `GET /db`
+- More info if needed on [json-server github page](https://github.com/typicode/json-server)
 
 Expect objects to look something like this:
 
@@ -122,7 +131,7 @@ type Cart = {
 #### Products
 - `GET` `http://localhost:8080/products`
 - `GET` `http://localhost:8080/products?q={keyword}`
-  ```json
+  ```javascript
       [
           {
               "id": 1,
@@ -141,10 +150,41 @@ type Cart = {
           ...
       ]
   ```
-
+- `POST` `http://localhost:8080/products`
+```json
+    {
+        "name": "Incredible Metal Sausages",
+        "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+        "defaultImage": "http://placeimg.com/640/480/cats",
+        "images": [
+            "http://placeimg.com/640/480/cats",
+            "http://placeimg.com/640/480/cats",
+            "http://placeimg.com/640/480/cats",
+            "http://placeimg.com/640/480/cats"
+        ],
+        "price": 64946.54,
+        "discount": 8
+    }
+```
+- `PUT` `http://localhost:8080/products/{product_id}`
+```json
+    {
+        "name": "Changed this",
+        "description": "And this",
+        "defaultImage": "http://placeimg.com/640/480/cats",
+        "images": [
+            "http://placeimg.com/640/480/cats",
+            "http://placeimg.com/640/480/cats",
+            "http://placeimg.com/640/480/cats",
+            "http://placeimg.com/640/480/cats"
+        ],
+        "price": 1,
+        "discount": 0
+    }
+```
 #### Users
 - `GET` `http://localhost:8080/users/{user_id}`
-    ```json
+    ```javascript
     {
         "id": 1,
         "name": {
@@ -178,7 +218,7 @@ type Cart = {
     ```
 #### Carts
 - `GET` `http://localhost:8080/carts/{user_id}`
-    ```json
+    ```javascript
       {
           "id": 1,
           "products": [
