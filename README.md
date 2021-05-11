@@ -30,30 +30,20 @@ We evaluate the task with the core areas of frontend development in mind, which 
 and HTML/CSS. Awe us with your knowledge and skills.
 
 ## Starter pack API
-A simple json-server based API that provides endpoints for products, users and their carts.
+We've provided a simple json-server based API on this repo that provides endpoints for products, users and their carts.
 
 #### Prerequisites to running the API:
-- Node.js installed in your environment
+- Node.js
+- Git
+- Yarn (optional)
 
 #### How to run:
-Install the dependencies using yarn (if installed) or npm
-``` sh
-yarn
-``` 
-or 
-``` sh
-npm install
-```
-
-#### Running the API
-
-Run the API server using
-``` sh
-yarn start
-``` 
-or 
-``` sh
-npm run start
+Copy this repo to the location you wish to have it in, install the dependencies and use the start command:
+```sh
+git clone https://github.com/recruit-case/Frontend-Starter.git
+cd Frontend-Starter
+yarn / npm install
+yarn start / npm run start
 ```
 The default location for the json-server is [`localhost:8080`](http://localhost:8080)
 
