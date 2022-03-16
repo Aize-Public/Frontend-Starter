@@ -1,4 +1,4 @@
-const faker = require('faker');
+const faker = require('@faker-js/faker').default;
 
 module.exports = () => {
     const data = {
@@ -9,7 +9,7 @@ module.exports = () => {
     }
 
     const amountOfProducts = 1000;
-    const amountOfRecommendedProduts = 10;
+    const amountOfRecommendedProducts = 10;
     const amountOfUsers = 100;
 
     /**
@@ -28,10 +28,10 @@ module.exports = () => {
             faker.image.cats(),
             faker.image.cats()
         ];
-        product.price = faker.random.float();
-        product.discount = faker.random.number(70);
+        product.price = faker.datatype.float();
+        product.discount = faker.datatype.number(70);
 
-        if (i <= amountOfRecommendedProduts) {
+        if (i <= amountOfRecommendedProducts) {
             data.recommendeds.push(product);
         }
         data.products.push(product);
@@ -63,11 +63,11 @@ module.exports = () => {
         user.role = i % 2 ? 'ADMIN' : 'CUSTOMER';
 
         // Random products that the user has ordered
-        for(let a = 1; a <= faker.random.number({min: 1, max: 5}); a++) {
+        for(let a = 1; a <= faker.datatype.number({min: 1, max: 5}); a++) {
             const orderedProducts = [];
-            for(let z = 1; z <= faker.random.number({min: 1, max: 5}); z++) {
-                const product = data.products[faker.random.number({min: 0, max: amountOfProducts - 1})];
-                orderedProducts.push({id: product.id, quantity: faker.random.number({min: 1, max: 10})});
+            for(let z = 1; z <= faker.datatype.number({min: 1, max: 5}); z++) {
+                const product = data.products[faker.datatype.number({min: 0, max: amountOfProducts - 1})];
+                orderedProducts.push({id: product.id, quantity: faker.datatype.number({min: 1, max: 10})});
             }
             user.orders.push({
                 id: a,
@@ -77,13 +77,13 @@ module.exports = () => {
 
         // Set random products into the user's cart
         const cart = [];
-        for(let y = 1; y <= faker.random.number(5); y++) {
-            const product = data.products[faker.random.number({min: 0, max: amountOfProducts - 1})]; 
-            cart.push({id: product.id, quantity: faker.random.number({min: 1, max: 10})});
+        for(let y = 1; y <= faker.datatype.number(5); y++) {
+            const product = data.products[faker.datatype.number({min: 0, max: amountOfProducts - 1})];
+            cart.push({id: product.id, quantity: faker.datatype.number({min: 1, max: 10})});
         }
         data.carts.push({id: user.id, products: cart});
 
-        
+
         data.users.push(user);
     }
 
