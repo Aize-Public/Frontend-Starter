@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/rock-ui",
+  "sourceRoot": "libs/rock-ui/src",
+  "prefix": "rock-band",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/rock-ui"],
+      "options": {
+        "jestConfig": "libs/rock-ui/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/rock-ui/src/**/*.ts",
+          "libs/rock-ui/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

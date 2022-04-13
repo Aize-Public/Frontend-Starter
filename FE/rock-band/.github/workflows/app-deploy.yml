@@ -1,0 +1,23 @@
+name: rockcart
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: npm install -g yarn
+      - run: npm install -g nx
+      - run: yarn rock:format
+      - run: yarn rock:lint
+      - run: yarn rock:test
+      - run: yarn rock:cart:test
+      - run: yarn rock:product:test
+      - run: yarn rock:prod

@@ -1,0 +1,16 @@
+<ng-container *ngIf="cartItms">
+  <div class="px-4 overflow-auto" style="height: 400px">
+    <ng-container *ngFor="let cItm of cartItms">
+      <ng-container *ngFor="let prds of cItm.products">
+        <rock-cart-item
+          label="{{ prds.name }}"
+          inlineText="{{ prds.quantity }}"
+        ></rock-cart-item>
+      </ng-container>
+    </ng-container>
+  </div>
+  <hr class="py-1" />
+  <div class="px-4 mt-4">
+    <rock-cart-item label="Total" inlineText="22"></rock-cart-item>
+  </div>
+</ng-container>

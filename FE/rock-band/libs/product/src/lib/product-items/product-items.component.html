@@ -1,0 +1,12 @@
+<ng-container *ngIf="productItm && productItm.length">
+  <div class="row">
+    <ng-container *ngFor="let itm of productItm">
+      <div class="col-md-4 pic-holder">
+        <rock-product-thumb
+          [imgSrc]="itm.defaultImage"
+          [title]="itm.name"
+        ></rock-product-thumb>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>

@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'LineIcons';
+    src: url('../../assets/fonts/LineIcons.eot');
+    src: url('../../assets/fonts/LineIcons.eot') format('embedded-opentype'),
+        url('../../assets/fonts/LineIcons.woff2') format('woff2'),
+        url('../../assets/fonts/LineIcons.woff') format('woff'),
+        url('../../assets/fonts/LineIcons.ttf') format('truetype'),
+        url('../../assets/fonts/LineIcons.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* nunito-regular - latin */
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../../assets/fonts/nunito-v16-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../../assets/fonts/nunito-v16-latin-regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../../assets/fonts/nunito-v16-latin-regular.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../../assets/fonts/nunito-v16-latin-regular.woff') format('woff'),
+        /* Modern Browsers */
+        url('../../assets/fonts/nunito-v16-latin-regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../../assets/fonts/nunito-v16-latin-regular.svg#Nunito') format('svg');
+    /* Legacy iOS */
+}
+
+.lni {
+    display: inline-block;
+    font: normal normal normal 32px/1 'LineIcons';
+    text-transform: none;
+    /* Better Font Rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.lni-search::before {
+    content: '\eb86';
+}
+
+.lni-list::before {
+    content: '\eb1d';
+}
+
+.lni-close::before {
+    content: '\ea6a';
+}

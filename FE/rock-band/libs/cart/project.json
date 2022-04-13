@@ -1,0 +1,23 @@
+{
+  "projectType": "library",
+  "root": "libs/cart",
+  "sourceRoot": "libs/cart/src",
+  "prefix": "rock-band",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cart"],
+      "options": {
+        "jestConfig": "libs/cart/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/cart/src/**/*.ts", "libs/cart/src/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,1 +1,13 @@
-<rock-band-nx-welcome></rock-band-nx-welcome>
+<section class="container" role="main">
+    <div class="row">
+        <rock-banner></rock-banner>
+    </div>
+    <div class="row">
+        <section class="col-md-8">
+            <router-outlet name="productOutlet"></router-outlet>
+        </section>
+        <section class="col-md-4">
+            <router-outlet name="cartOutlet"></router-outlet>
+        </section>
+    </div>
+</section>

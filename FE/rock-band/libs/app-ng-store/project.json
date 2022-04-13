@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/app-ng-store",
+  "sourceRoot": "libs/app-ng-store/src",
+  "prefix": "rock-band",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app-ng-store"],
+      "options": {
+        "jestConfig": "libs/app-ng-store/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app-ng-store/src/**/*.ts",
+          "libs/app-ng-store/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

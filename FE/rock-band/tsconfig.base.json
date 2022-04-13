@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@rock-band-ng-store": ["libs/app-ng-store/src/index.ts"],
+      "@rock-band-cart": ["libs/cart/src/index.ts"],
+      "@rock-band-product": ["libs/product/src/index.ts"],
+      "@rock-band-rock-ui": ["libs/rock-ui/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

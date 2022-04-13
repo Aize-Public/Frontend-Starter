@@ -1,0 +1,11 @@
+<div class="card">
+  <img
+    class="card-img-top"
+    [src]="imgSrc || 'https://via.placeholder.com/150/'"
+    alt="Card image cap"
+  />
+  <div class="card-body">
+    <p class="card-text">{{ title }}</p>
+    <button class="btn btn-primary btn-sm" (click)="addToCartHandler($event)">AddToCart</button>
+  </div>
+</div>
