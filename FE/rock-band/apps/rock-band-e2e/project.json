@@ -1,0 +1,28 @@
+{
+  "root": "apps/rock-band-e2e",
+  "sourceRoot": "apps/rock-band-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/rock-band-e2e/cypress.json",
+        "devServerTarget": "rock-band:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "rock-band:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/rock-band-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["rock-band"]
+}

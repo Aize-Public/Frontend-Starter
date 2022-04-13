@@ -79,7 +79,7 @@ module.exports = () => {
         const cart = [];
         for(let y = 1; y <= faker.random.number(5); y++) {
             const product = data.products[faker.random.number({min: 0, max: amountOfProducts - 1})]; 
-            cart.push({id: product.id, quantity: faker.random.number({min: 1, max: 10})});
+            cart.push({id: product.id, quantity: faker.random.number({min: 1, max: 10}), name: product.name });
         }
         data.carts.push({id: user.id, products: cart});
 

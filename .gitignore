@@ -3,3 +3,9 @@
 BE/node_modules
 BE/dist
 *.log
+
+FE/rock-band/.vscode
+FE/rock-band/.idea
+FE/rock-band/node_modules
+FE/rock-band/.angular
+FE/rock-band/dist

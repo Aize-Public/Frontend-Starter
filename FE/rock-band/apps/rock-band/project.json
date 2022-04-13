@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/rock-band",
+  "sourceRoot": "apps/rock-band/src",
+  "prefix": "rock-band",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/rock-band",
+        "index": "apps/rock-band/src/index.html",
+        "main": "apps/rock-band/src/main.ts",
+        "polyfills": "apps/rock-band/src/polyfills.ts",
+        "tsConfig": "apps/rock-band/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/rock-band/src/favicon.ico",
+          "apps/rock-band/src/assets"
+        ],
+        "styles": ["apps/rock-band/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/rock-band/src/environments/environment.ts",
+              "with": "apps/rock-band/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "rock-band:build:production"
+        },
+        "development": {
+          "browserTarget": "rock-band:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "rock-band:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/rock-band/src/**/*.ts",
+          "apps/rock-band/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/rock-band"],
+      "options": {
+        "jestConfig": "apps/rock-band/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "rock-band": "apps/rock-band",
+    "rock-band-e2e": "apps/rock-band-e2e"
+  }
+}
