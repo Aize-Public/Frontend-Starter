@@ -40,4 +40,13 @@ Project Script Guide:
   - `yarn rock:lint`
   - `yarn rock:format`
 
+### Code Coverage Report
+
+<img src="./git_assets/cart-code-coverage.png" width="45%"/>
+<img src="./git_assets/product-code-coverage.png" width="45%"/>
+
+### Storybook Feature
+
+<img src="./git_assets/storybook-view.png" width="45%"/>
+
 This project was generated using [Nx](https://nx.dev).

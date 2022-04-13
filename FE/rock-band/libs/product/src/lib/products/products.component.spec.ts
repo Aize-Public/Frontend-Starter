@@ -1,4 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StoreModule } from '@ngrx/store';
 import { productStore } from '@rock-band-ng-store';
@@ -18,6 +19,7 @@ describe('ProductsComponent', () => {
         ProductPipesModule,
         StoreModule.forRoot({ products: productStore.productReducer }),
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   });
 
